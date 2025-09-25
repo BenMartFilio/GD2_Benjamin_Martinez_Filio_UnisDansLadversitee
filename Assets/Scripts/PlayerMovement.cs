@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -9,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     private float _verticalMovement;
     private Vector3 _movement;
     private bool _bstopMovement = true;
+    private float impulseValue = 1f;
 
     [SerializeField] private float _vitesse = 2.0f;
 
@@ -31,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
             _movement.Normalize();
             _movement *= _vitesse;
             _movement.y = _rb.linearVelocity.y;
+
             
 
             if (_rb != null)
@@ -49,9 +52,24 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.gameObject.GetComponent<DestroyCubeScript>() != null)
         {
-            _bstopMovement = true;
-            _rb.AddForce(_movement*-2);   //Mettre repoussement au contact  
-            //_rb.AddExplosionForce(float 2, other.gameObject.GetComponent);
+            _bstopMovement = false;
+            _rb.AddForce(_movement* impulseValue,ForceMode.Impulse);   //Mettre repoussement au contact  
+                                                                       //_rb.AddExplosionForce(float 2, other.gameObject.GetComponent);
+            Debug.Log("BOSS");
+
+           StartCoroutine(DelayThenFall(1.0f));
+
+           IEnumerator DelayThenFall(float delay)
+            {
+                yield return new WaitForSeconds (delay);
+                _bstopMovement = true;
+                Debug.Log("HEY");
+                //   Fall = true;
+                //  Animator.SetBool("Fall", Fall);
+            }
+
+            
+
         }
         
         
