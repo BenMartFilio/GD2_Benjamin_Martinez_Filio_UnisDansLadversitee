@@ -49,8 +49,9 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.gameObject.GetComponent<DestroyCubeScript>() != null)
         {
-          _bstopMovement = true;
-        _rb.AddForce(_movement*-100);   //Mettre repoussement au contact  
+            _bstopMovement = true;
+            _rb.AddForce(_movement*-2);   //Mettre repoussement au contact  
+            //_rb.AddExplosionForce(float 2, other.gameObject.GetComponent);
         }
         
         
