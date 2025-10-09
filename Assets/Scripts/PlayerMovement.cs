@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 _movement;
     private bool _bstopMovement = true;
     private float impulseValue = 1f;
+    private int _typeOfDeplacement = 0;  //Nombre qui correspond à comment va fonctionner le mouvement (en 3D avec zqsd, en 2D avec q et d etc.) 
 
     [SerializeField] private float _vitesse = 2.0f;
 
@@ -29,8 +30,16 @@ public class PlayerMovement : MonoBehaviour
 
             _horizontalMovement = Input.GetAxis("Horizontal");
             _verticalMovement = Input.GetAxis("Vertical");
-            _movement = new Vector3(_horizontalMovement, 0f, _verticalMovement);
-            _movement.Normalize();
+            if (_typeOfDeplacement == 0)
+            {
+                _movement = new Vector3(_horizontalMovement, 0f, _verticalMovement);
+            }
+            else if (_typeOfDeplacement == 1)
+            {
+                _movement = new Vector3(_horizontalMovement, 0f, 0f);
+            }
+
+                _movement.Normalize();
             _movement *= _vitesse;
             _movement.y = _rb.linearVelocity.y;
 
@@ -59,7 +68,7 @@ public class PlayerMovement : MonoBehaviour
 
            StartCoroutine(DelayThenFall(1.0f));
 
-           IEnumerator DelayThenFall(float delay)
+           IEnumerator DelayThenFall(float delay) //Délais après une collision pour lequel le joueur ne peut plus bouger
             {
                 yield return new WaitForSeconds (delay);
                 _bstopMovement = true;
