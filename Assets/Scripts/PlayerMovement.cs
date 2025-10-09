@@ -12,6 +12,9 @@ public class PlayerMovement : MonoBehaviour
     private bool _bstopMovement = true;
     private float impulseValue = 1f;
     private int _typeOfDeplacement = 0;  //Nombre qui correspond à comment va fonctionner le mouvement (en 3D avec zqsd, en 2D avec q et d etc.) 
+    private Vector3 _grappinDirection;
+    private Vector3 _grappintHit; 
+
 
     [SerializeField] private float _vitesse = 2.0f;
 
@@ -25,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        GrappinUpdateDirection(_movement);
         if (_bstopMovement)
         {
 
@@ -52,11 +56,55 @@ public class PlayerMovement : MonoBehaviour
             else
             {
                 Debug.LogError("No RigidBody Attached !");
+         
             }
+
+
+
+            if (Input.GetKeyDown(KeyCode.G))
+            {
+                TryThrowGrappin();
+            }
+
+            if (Input.GetKeyUp(KeyCode.G))
+            {
+                ThrowGrappin();
+            }
+
         }
 
 
     }
+
+    
+
+    private void GrappinUpdateDirection(Vector3 direction)
+    {
+        if (direction.sqrMagnitude > 0.1f)
+        {
+            _grappinDirection = direction;
+        }
+    }
+
+   
+
+    private void TryThrowGrappin()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position,_grappinDirection, out hit, maxDistance:100f))
+        {
+            _grappintHit = hit.point+hit.normal*1.5f;
+        }
+    }
+
+    private void ThrowGrappin()
+    {
+        transform.position = _grappintHit;
+        _grappinDirection = Vector3.zero;
+    }
+
+
+
     private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.GetComponent<DestroyCubeScript>() != null)
