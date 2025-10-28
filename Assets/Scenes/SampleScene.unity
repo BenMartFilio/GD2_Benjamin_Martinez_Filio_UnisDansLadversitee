@@ -1251,6 +1251,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: === HUD ===
       objectReference: {fileID: 0}
+    - target: {fileID: 2050163332775836626, guid: 5fd4a92826f5df54bb0e590938665cdd, type: 3}
+      propertyPath: m_fontSize
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 2050163332775836626, guid: 5fd4a92826f5df54bb0e590938665cdd, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 5209723775759151811, guid: 5fd4a92826f5df54bb0e590938665cdd, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1330,6 +1338,22 @@ PrefabInstance:
     - target: {fileID: 5209723775759151811, guid: 5fd4a92826f5df54bb0e590938665cdd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6194248985716284464, guid: 5fd4a92826f5df54bb0e590938665cdd, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 270
+      objectReference: {fileID: 0}
+    - target: {fileID: 6194248985716284464, guid: 5fd4a92826f5df54bb0e590938665cdd, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 6194248985716284464, guid: 5fd4a92826f5df54bb0e590938665cdd, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6194248985716284464, guid: 5fd4a92826f5df54bb0e590938665cdd, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
