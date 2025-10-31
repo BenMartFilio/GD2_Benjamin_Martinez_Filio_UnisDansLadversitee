@@ -17,7 +17,8 @@ public class EndAffichage : MonoBehaviour
     {
         trans = GetComponent<CanvasGroup>();
         trans.alpha = aValue;
-
+        Timer timer = entreNiveau.GetComponent<Timer>();
+        timer.BaseTimer();
         StartCoroutine(IncreaseOpacity());
         
     }
@@ -33,14 +34,20 @@ public class EndAffichage : MonoBehaviour
             trans.alpha = aValue;
             yield return null;
         }
-        
+        trans.blocksRaycasts = true;
+
+    }
+
+    public void DisableEnd()
+    {
+        StartCoroutine(DecreaseOpacity());
     }
 
 
     private IEnumerator DecreaseOpacity()
     {
         float temps = 0f;
-
+        trans.blocksRaycasts = false;
         while (temps < transitionDuree)
         {
             temps += Time.deltaTime;

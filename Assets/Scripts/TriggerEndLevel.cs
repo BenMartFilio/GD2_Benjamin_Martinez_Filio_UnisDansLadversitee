@@ -11,12 +11,14 @@ public class TriggerEndLevel : MonoBehaviour
     [SerializeField] private TMP_Text _scoreText; //Score
     [SerializeField] public float dureeBetweenLevels;
     [SerializeField] public int whichLevel;
-
+    
 
     public void ChangeLevelCall()
     {
         trans = GetComponent<CanvasGroup>();
         trans.alpha = aValue;
+        Timer timer = GetComponent<Timer>();
+        timer.DisableTimer();
         StartCoroutine(IncreaseOpacity());
 
     }
@@ -32,7 +34,7 @@ public class TriggerEndLevel : MonoBehaviour
             trans.alpha = aValue;
             yield return null;
         }
-
+        StartCoroutine(DelayBeforeNewLevel(dureeBetweenLevels));
     }
     private IEnumerator DecreaseOpacity()
     {
@@ -45,6 +47,7 @@ public class TriggerEndLevel : MonoBehaviour
             trans.alpha = aValue;
             yield return null;
         }
+        
 
     }
 
@@ -68,7 +71,7 @@ public class TriggerEndLevel : MonoBehaviour
     {
         ChangeLevelCall();
         _scoreText.text = "Score : " + newScore.ToString();
-        StartCoroutine(DelayBeforeNewLevel(dureeBetweenLevels));
+        
 
     }
 
@@ -77,11 +80,16 @@ public class TriggerEndLevel : MonoBehaviour
 
     IEnumerator DelayBeforeNewLevel(float delay) 
     {
+
+        LevelManager level = GetComponent<LevelManager>();
+        level.LoadANewLevel(whichLevel);
+        Timer timer = GetComponent<Timer>();
+        timer.RestartTimer();
         yield return new WaitForSeconds(delay);
         StartCoroutine(DecreaseOpacity());
-           LevelManager level = GetComponent<LevelManager>();
-           level.LoadANewLevel(whichLevel);
-       // LevelManager.Instance.LoadANewLevel();
+        timer.EnableTimer();
+           
+        // LevelManager.Instance.LoadANewLevel();
     }
 
 }

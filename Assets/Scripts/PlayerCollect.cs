@@ -11,8 +11,13 @@ public class PlayerCollect : MonoBehaviour
     public void UpdateScore(int value)
     {
         _scoreData.scoreValue = Mathf.Clamp(_scoreData.scoreValue + value, min:0, max: _scoreData.scoreValue + value);
+        if (_scoreData.scoreValue > _scoreData.bestScore)
+        {
+            _scoreData.bestScore = _scoreData.scoreValue; //Défini le meilleur score du joueur
+        }
         //_uiController.UpdateScore(_scoreData.scoreValue);  //cf. lien fort
         OnTargetCollected?.Invoke(_scoreData.scoreValue);
         Debug.Log(_scoreData.scoreValue);
     }
+    
 }
