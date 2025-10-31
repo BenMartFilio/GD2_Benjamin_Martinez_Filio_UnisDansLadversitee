@@ -4,16 +4,13 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {
 
-    void Update()
+    public void LoadANewLevel(int level)
     {
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            LoadANewLevel(buildIndex: 1);
-        }
+        SceneManager.LoadScene(level);
     }
 
-    public void LoadANewLevel(int buildIndex)
+    public void Lose()
     {
-        SceneManager.LoadScene(buildIndex);
+        LoadANewLevel(0);
     }
 }

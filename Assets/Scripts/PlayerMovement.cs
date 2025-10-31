@@ -105,33 +105,66 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-    private void OnCollisionEnter(Collision other)
-    {
-        if (other.gameObject.GetComponent<DestroyCubeScript>() != null)
-        {
-            _bstopMovement = false;
-            _rb.AddForce(_movement* impulseValue,ForceMode.Impulse);   //Mettre repoussement au contact  
+ //   private void OnCollisionEnter(Collision other)
+ //   {
+  //      if (other.gameObject.GetComponent<DestroyCubeScript>() != null)
+ //       {
+  //          _bstopMovement = false;
+  //          _rb.AddForce(_movement* impulseValue,ForceMode.Impulse);   //Mettre repoussement au contact  
                                                                        //_rb.AddExplosionForce(float 2, other.gameObject.GetComponent);
-            Debug.Log("BOSS");
+     //       Debug.Log("BOSS");
 
-           StartCoroutine(DelayThenFall(1.0f));
+    //       StartCoroutine(DelayThenFall(1.0f));
 
-           IEnumerator DelayThenFall(float delay) //Délais après une collision pour lequel le joueur ne peut plus bouger
-            {
-                yield return new WaitForSeconds (delay);
-                _bstopMovement = true;
-                Debug.Log("HEY");
-                //   Fall = true;
-                //  Animator.SetBool("Fall", Fall);
-            }
+   //        IEnumerator DelayThenFall(float delay) //Délais après une collision pour lequel le joueur ne peut plus bouger
+ //           {
+   //             yield return new WaitForSeconds (delay);
+  //              _bstopMovement = true;
+   //             Debug.Log("HEY");
+                
+  //          }
 
             
 
-        }
+    //    }
         
         
+  //  }
+
+
+
+
+    // DESACTIVATION DU MOUVEMENT ET REACTIVATION
+
+    private void OnEnable()
+    {
+        PlayerCollect.OnTargetCollected += ReactionEndLevel;
+    }
+
+    private void OnDisable()
+    {
+        PlayerCollect.OnTargetCollected -= ReactionEndLevel;
     }
 
 
-    
+
+    public void ReactionEndLevel(int newScore)
+    {
+        _bstopMovement = false;
+    //    _rb.AddForce(_movement * impulseValue, ForceMode.Impulse);   //Mettre repoussement au contact  
+                                                                     //_rb.AddExplosionForce(float 2, other.gameObject.GetComponent
+
+        StartCoroutine(DelayThenFall(2.5f));
+
+        IEnumerator DelayThenFall(float delay) //Délais après une collision pour lequel le joueur ne peut plus bouger
+        {
+            yield return new WaitForSeconds(delay);
+            _bstopMovement = true;
+           
+
+        }
+
+    }
+
+
 }

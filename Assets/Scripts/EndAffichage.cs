@@ -1,34 +1,59 @@
 using UnityEngine;
 using System.Collections;
+using TMPro;
+using UnityEngine.Rendering;
 
 public class EndAffichage : MonoBehaviour
 {
     private float aValue = 0f;
     private CanvasGroup trans;
-    [SerializeField] public float transitionDuration = 1.5f; //temps pour lequel l'écran apparait
+    [SerializeField] public float transitionDuree = 1.5f; //temps pour lequel l'écran apparait
+    [SerializeField] private TMP_Text _scoreText; //Score
 
-    
+
     public void endOfGame()
     {
         trans = GetComponent<CanvasGroup>();
         trans.alpha = aValue;
 
-
         StartCoroutine(DecreaseOpacity());
+        
     }
 
     private IEnumerator DecreaseOpacity()
     {
         float temps = 0f;
 
-        while (temps < transitionDuration)
+        while (temps < transitionDuree)
         {
             temps += Time.deltaTime;
-            aValue = Mathf.Lerp(0f, 1f, temps / transitionDuration);
+            aValue = Mathf.Lerp(0f, 1f, temps / transitionDuree);
             trans.alpha = aValue;
             yield return null;
         }
         
     }
+
+//    private void OnEnable()
+ //   {
+ //       PlayerCollect.OnTargetCollected += ReactionEndLevel;
+ //   }
+
+ //   private void OnDisable()
+ //   {
+ //       PlayerCollect.OnTargetCollected -= ReactionEndLevel;
+ //   }
+
+
+//    public void Start()
+//    {
+//        ReactionEndLevel(0);
+//    }
+
+  //  public void ReactionEndLevel(int newScore)
+   // {
+  //      endOfGame();
+   //     _scoreText.text = "Score : " + newScore.ToString();
+   // }
 
 }

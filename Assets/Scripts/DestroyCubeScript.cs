@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class DestroyCubeScript : MonoBehaviour
 {
-    private int _life = 5;  //Mettre nombre aléatoire
-    [SerializeField] private int _score = 1; // score que rapporte l'ennemi
+    private int _life = 5;  //Vie du cube
+    [SerializeField] private int _score = 1; //Score que rapporte le cube
     public float bonus = 1; //Bonus qui peut affecter le score
-    private int _trueScore;
+    private int _trueScore; //Score*bonus
 
 
     private void OnCollisionEnter(Collision other)
