@@ -9,6 +9,8 @@ public class EndAffichage : MonoBehaviour
     private CanvasGroup trans;
     [SerializeField] public float transitionDuree = 1.5f; //temps pour lequel l'écran apparait
     [SerializeField] private TMP_Text _scoreText; //Score
+    [SerializeField] public GameObject entreNiveau;
+    [SerializeField] public float dureeBeforeEnd;
 
 
     public void endOfGame()
@@ -16,11 +18,11 @@ public class EndAffichage : MonoBehaviour
         trans = GetComponent<CanvasGroup>();
         trans.alpha = aValue;
 
-        StartCoroutine(DecreaseOpacity());
+        StartCoroutine(IncreaseOpacity());
         
     }
 
-    private IEnumerator DecreaseOpacity()
+    private IEnumerator IncreaseOpacity()
     {
         float temps = 0f;
 
@@ -34,26 +36,53 @@ public class EndAffichage : MonoBehaviour
         
     }
 
-//    private void OnEnable()
- //   {
- //       PlayerCollect.OnTargetCollected += ReactionEndLevel;
- //   }
 
- //   private void OnDisable()
- //   {
- //       PlayerCollect.OnTargetCollected -= ReactionEndLevel;
- //   }
+    private IEnumerator DecreaseOpacity()
+    {
+        float temps = 0f;
+
+        while (temps < transitionDuree)
+        {
+            temps += Time.deltaTime;
+            aValue = Mathf.Lerp(1f, 0f, temps / transitionDuree);
+            trans.alpha = aValue;
+            yield return null;
+        }
+
+    }
+
+    //    private void OnEnable()
+    //   {
+    //       PlayerCollect.OnTargetCollected += ReactionEndLevel;
+    //   }
+
+    //   private void OnDisable()
+    //   {
+    //       PlayerCollect.OnTargetCollected -= ReactionEndLevel;
+    //   }
 
 
-//    public void Start()
-//    {
-//        ReactionEndLevel(0);
-//    }
+    //    public void Start()
+    //    {
+    //        ReactionEndLevel(0);
+    //    }
 
-  //  public void ReactionEndLevel(int newScore)
-   // {
-  //      endOfGame();
-   //     _scoreText.text = "Score : " + newScore.ToString();
-   // }
+    //  public void ReactionEndLevel(int newScore)
+    // {
+    //      endOfGame();
+    //     _scoreText.text = "Score : " + newScore.ToString();
+    // }
+
+
+    public void LoseGame()
+    {
+        endOfGame();
+
+    }
+
+
+
+
+    
 
 }
