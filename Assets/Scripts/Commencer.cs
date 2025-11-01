@@ -6,8 +6,6 @@ using UnityEngine.Rendering;
 public class Commencer : MonoBehaviour
 {
 
-   // [SerializeField] public GameObject entreNiveau;
-  //  [SerializeField] public GameObject fin;
     [SerializeField] public Timer timer;
 
 
