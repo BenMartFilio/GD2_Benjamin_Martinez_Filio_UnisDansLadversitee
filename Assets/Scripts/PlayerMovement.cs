@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     private float _horizontalMovement;
     private float _verticalMovement;
     private Vector3 _movement;
-    private bool _bstopMovement = true;
+    private bool _bstopMovement = false;
     private float impulseValue = 1f;
     private int _typeOfDeplacement = 0;  //Nombre qui correspond à comment va fonctionner le mouvement (en 3D avec zqsd, en 2D avec q et d etc.) 
     private Vector3 _grappinDirection;
@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         GrappinUpdateDirection(_movement);
-        if (_bstopMovement)
+        if (_bstopMovement == false)
         {
 
             _horizontalMovement = Input.GetAxis("Horizontal");
@@ -150,7 +150,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void ReactionEndLevel(int newScore)
     {
-        _bstopMovement = false;
+        _bstopMovement = true;
     //    _rb.AddForce(_movement * impulseValue, ForceMode.Impulse);   //Mettre repoussement au contact  
                                                                      //_rb.AddExplosionForce(float 2, other.gameObject.GetComponent
 
@@ -159,12 +159,21 @@ public class PlayerMovement : MonoBehaviour
         IEnumerator DelayThenFall(float delay) //Délais après une collision pour lequel le joueur ne peut plus bouger
         {
             yield return new WaitForSeconds(delay);
-            _bstopMovement = true;
+   //         _bstopMovement = false;
            
 
         }
 
     }
 
+    public void StopMovement()
+    {
+        _bstopMovement = true;
+    }
+
+    public void StartMovement()
+    {
+        _bstopMovement = false;
+    }
 
 }

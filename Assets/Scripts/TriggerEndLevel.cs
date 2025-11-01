@@ -87,7 +87,7 @@ public class TriggerEndLevel : MonoBehaviour
         timer.RestartTimer();
         yield return new WaitForSeconds(delay);
         StartCoroutine(DecreaseOpacity());
-        timer.EnableTimer();
+       // timer.EnableTimer();
            
         // LevelManager.Instance.LoadANewLevel();
     }
