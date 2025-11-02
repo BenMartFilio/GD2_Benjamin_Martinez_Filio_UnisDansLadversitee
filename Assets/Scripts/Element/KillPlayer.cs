@@ -2,15 +2,16 @@ using UnityEngine;
 
 public class KillPlayer : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    [SerializeField] public Timer timer;
+
+
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if (other.gameObject.GetComponent<PlayerMovement>() != null)
+        {
+            timer = FindFirstObjectByType<Timer>();
+            timer.temps = 0;
+        }
     }
 }

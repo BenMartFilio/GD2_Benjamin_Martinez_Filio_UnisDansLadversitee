@@ -6,7 +6,8 @@ using UnityEngine.Rendering;
 public class Commencer : MonoBehaviour
 {
 
-    [SerializeField] public Timer timer;
+    [SerializeField] public Timer timer; 
+    [SerializeField] public float timeToWait = 4f;
 
 
 
@@ -18,7 +19,7 @@ public class Commencer : MonoBehaviour
 
     public void StartGame()
     { 
-        StartCoroutine(DelayBeforeNewLevel(4));
+        StartCoroutine(DelayBeforeNewLevel(timeToWait));
     }
 
     IEnumerator DelayBeforeNewLevel(float delay)
