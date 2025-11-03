@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 public class Timer : MonoBehaviour
 {
-    [SerializeField] public static float baseTemps = 5;
+    [SerializeField] public static float baseTemps = 35;
     public float temps = baseTemps; //Temps fixe pour LE PREMIER NIVEAU SEULEMENT
     [SerializeField] public TMP_Text timerText;
     [SerializeField] public GameObject fondFin;

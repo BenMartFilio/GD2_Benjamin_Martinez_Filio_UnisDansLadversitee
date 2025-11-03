@@ -11,9 +11,10 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 _movement;
     private bool _bstopMovement = false;
     private float impulseValue = 1f;
-    private int _typeOfDeplacement = 0;  //Nombre qui correspond à comment va fonctionner le mouvement (en 3D avec zqsd, en 2D avec q et d etc.) 
+    private int _typeOfDeplacement = 0;  //Nombre qui correspond ï¿½ comment va fonctionner le mouvement (en 3D avec zqsd, en 2D avec q et d etc.) 
     private Vector3 _grappinDirection;
-    private Vector3 _grappintHit; 
+    private Vector3 _grappintHit;
+    public float forceSaut = 5f;
 
 
     [SerializeField] private float _vitesse = 2.0f;
@@ -28,6 +29,11 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Jump();
+        }
+
         GrappinUpdateDirection(_movement);
         if (_bstopMovement == false)
         {
@@ -116,7 +122,7 @@ public class PlayerMovement : MonoBehaviour
 
     //       StartCoroutine(DelayThenFall(1.0f));
 
-   //        IEnumerator DelayThenFall(float delay) //Délais après une collision pour lequel le joueur ne peut plus bouger
+   //        IEnumerator DelayThenFall(float delay) //Dï¿½lais aprï¿½s une collision pour lequel le joueur ne peut plus bouger
  //           {
    //             yield return new WaitForSeconds (delay);
   //              _bstopMovement = true;
@@ -156,7 +162,7 @@ public class PlayerMovement : MonoBehaviour
 
         StartCoroutine(DelayThenFall(2.5f));
 
-        IEnumerator DelayThenFall(float delay) //Délais après une collision pour lequel le joueur ne peut plus bouger
+        IEnumerator DelayThenFall(float delay) //Dï¿½lais aprï¿½s une collision pour lequel le joueur ne peut plus bouger
         {
             yield return new WaitForSeconds(delay);
    //         _bstopMovement = false;
@@ -175,5 +181,13 @@ public class PlayerMovement : MonoBehaviour
     {
         _bstopMovement = false;
     }
+
+
+    void Jump()
+    {
+        _rb.linearVelocity = new Vector3(_rb.linearVelocity.x, 0f, _rb.linearVelocity.z);
+        _rb.AddForce(Vector3.up * forceSaut, ForceMode.Impulse);
+    }
+
 
 }
