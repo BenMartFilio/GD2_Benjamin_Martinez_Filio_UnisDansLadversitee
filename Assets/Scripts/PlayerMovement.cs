@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     public float forceSaut = 5f;
 
 
-    [SerializeField] private float _vitesse = 2.0f;
+    [SerializeField] private float _vitesse = 10.0f;
 
     void Start()
     {
@@ -83,6 +83,17 @@ public class PlayerMovement : MonoBehaviour
     }
 
     
+    public void SlowVitesse()
+    {
+        _vitesse = 2f;
+    }
+
+    public void NormalVitesse()
+    {
+        _vitesse = 10f;
+        Debug.Log("Vitesse Normale");
+    }
+
 
     private void GrappinUpdateDirection(Vector3 direction)
     {
