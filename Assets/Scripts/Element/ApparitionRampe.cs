@@ -13,6 +13,8 @@ public class ApparitionRampe : MonoBehaviour
 
     void Start()
     {
+        bassePosition = new Vector3(transform.position.x, bassePosition.y, transform.position.z);
+        hautePosition = new Vector3(transform.position.x, hautePosition.y, transform.position.z);
         if (pressurePlate != null)
         {
             pressurePlate.ifPressed.AddListener(() => MouvementRampe(true));

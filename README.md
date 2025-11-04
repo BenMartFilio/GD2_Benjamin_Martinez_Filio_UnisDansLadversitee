@@ -5,9 +5,12 @@ Tout d'abord, j'ai eu de grosses difficultés notamment sur le changement de niv
 Ensuite, j'ai rencontré des problèmes avec le changement de niveau, le score, et les chargements : déjà je ne savais pas comment faire pour que durant le changement de niveaux, l'écran d'entre-niveau (qui affiche le score actuel) reste. Cela m'a pris un peu de temps pour trouver une solution en mettant le HUD en persistant.
 
 Pour ce qui est de l'effet lié au temps, j'utilise le score pour réduire petit à petit le temps des niveaux (que l'on refait en boucle), jusqu'à 5 secondes minumum.
-J'ai ajouté une logique de collection avec une clef, qui lorsqu'elle est ramassée, la fait apparaitre sur l'UI, et fait une apparition conditionnellede gameobjects bonus (comme les murs dans le cours). Ces bonus lorsqu'ils sont approchés par le joueur, vérifient s'il possède une clef, et si oui, ils disparaissent et ajouteront +1 de score supplémentaire à la fin du niveau (ce score n'est pas ajoutez si vous mourrez avant). Donc il y a une clef, qui a pour effet de permettre d'ouvrir le bonus, et de gagner du score supplémentaire.
+J'ai ajouté une logique de collection avec une clef, qui lorsqu'elle est ramassée, la fait apparaitre sur l'UI, et fait une apparition conditionnelle de gameobjects bonus (comme les murs dans le cours). Ces bonus lorsqu'ils sont approchés par le joueur, vérifient s'il possède une clef, et si oui, ils disparaissent et ajouteront +1 de score supplémentaire à la fin du niveau (ce score n'est pas ajouté si vous mourrez avant). Donc il y a une clef, qui a pour effet de permettre d'ouvrir le coffre bonus, et donc de gagner du score supplémentaire.
 
-Il y a un menu des options, que j'aurais voulu développer mais qui contient uniquement le volume général.
+Il y a un menu des options, que j'aurais voulu développer mais qui contient uniquement le volume général..
+
+Pour ce qui est de l'effet environnemental bénéfique, j'ai fait une plaque de pression, qui peut être actionnée par le joueur et par un cube poussable, et qui permet d'accéder à la suite d'un niveau, où d'accéder à une zone bonus.
+Il y a aussi un effet lié au temps, avec un piège qui, lorsqu'il est touché, fait ralentir le joueur pendant quelques secondes.
 
 Condition de victoire : Le jeu est une boucle où il faut marquer le plus de points : vous gagnez des points en ramassant le collectible final du niveau (qui vous change de niveau)
 

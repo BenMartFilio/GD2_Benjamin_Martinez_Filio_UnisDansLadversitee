@@ -11,7 +11,8 @@ public class TriggerEndLevel : MonoBehaviour
     [SerializeField] private TMP_Text _scoreText; //Score
     [SerializeField] public float dureeBetweenLevels;
     [SerializeField] public int whichLevel;
-    
+    [SerializeField] private WhichLevels _whichlevel;
+
 
     public void ChangeLevelCall()
     {
@@ -80,7 +81,8 @@ public class TriggerEndLevel : MonoBehaviour
 
     IEnumerator DelayBeforeNewLevel(float delay) 
     {
-
+        _whichlevel = FindFirstObjectByType<WhichLevels>();
+        whichLevel = _whichlevel.nextLevel;
         LevelManager level = GetComponent<LevelManager>();
         level.LoadANewLevel(whichLevel);
         Timer timer = GetComponent<Timer>();

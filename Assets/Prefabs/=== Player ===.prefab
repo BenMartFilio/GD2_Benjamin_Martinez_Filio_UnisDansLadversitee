@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 1610015073507675600}
   - component: {fileID: 3329612338184969050}
   - component: {fileID: 1617736424386527404}
+  - component: {fileID: 71098654487924216}
   m_Layer: 0
   m_Name: === Player ===
   m_TagString: Untagged
@@ -168,6 +169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _scoreData: {fileID: 11400000, guid: 41a81861fb7fa314b8d61cdcacf5fd51, type: 2}
   _uiController: {fileID: 0}
+  _hudManager: {fileID: 0}
   haveKey: 0
   bonus: 0
 --- !u!114 &3329612338184969050
@@ -184,6 +186,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timer: {fileID: 0}
   timeToWait: 1.5
+  _uiControle: {fileID: 0}
+  _uiController: {fileID: 0}
+  startText: {fileID: 0}
 --- !u!114 &1617736424386527404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,3 +201,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cac9c6aa359fa35489ce8197229d1bc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!81 &71098654487924216
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2365953081035476591}
+  m_Enabled: 1

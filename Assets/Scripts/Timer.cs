@@ -1,8 +1,10 @@
-using UnityEngine;
-using TMPro;
-using UnityEngine.Rendering;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour
 {
@@ -14,11 +16,11 @@ public class Timer : MonoBehaviour
     public int tempsint;
     public int score = 0;
     public bool disabled = false;
+    int[] tempsTab = new int[] { 35, 45, 65, 60, 60, 60, 60, 60, 60 }; // chaque niveau a un temps
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
         score = _scoreData.scoreValue;
         temps = Mathf.Clamp(temps - (score/5), 5, temps);
     }
@@ -55,7 +57,8 @@ public class Timer : MonoBehaviour
 
     public void RestartTimer()
     {
-        temps = 10;
+        int sceneIndex = SceneManager.GetActiveScene().buildIndex;
+        temps = tempsTab[sceneIndex];
         score = _scoreData.scoreValue;
         temps = Mathf.Clamp(temps - (score / 5), 5, temps); //Clamp pour ne pas que le temps tombe en dessous de 5 secondes
     }
