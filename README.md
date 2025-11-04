@@ -5,8 +5,9 @@ Tout d'abord, j'ai eu de grosses difficultés notamment sur le changement de niv
 Ensuite, j'ai rencontré des problèmes avec le changement de niveau, le score, et les chargements : déjà je ne savais pas comment faire pour que durant le changement de niveaux, l'écran d'entre-niveau (qui affiche le score actuel) reste. Cela m'a pris un peu de temps pour trouver une solution en mettant le HUD en persistant.
 
 Pour ce qui est de l'effet lié au temps, j'utilise le score pour réduire petit à petit le temps des niveaux (que l'on refait en boucle), jusqu'à 5 secondes minumum.
+J'ai ajouté une logique de collection avec une clef, qui lorsqu'elle est ramassée, la fait apparaitre sur l'UI, et fait une apparition conditionnellede gameobjects bonus (comme les murs dans le cours). Ces bonus lorsqu'ils sont approchés par le joueur, vérifient s'il possède une clef, et si oui, ils disparaissent et ajouteront +1 de score supplémentaire à la fin du niveau (ce score n'est pas ajoutez si vous mourrez avant). Donc il y a une clef, qui a pour effet de permettre d'ouvrir le bonus, et de gagner du score supplémentaire.
 
 Condition de victoire : Le jeu est une boucle où il faut marquer le plus de points : vous gagnez des points en ramassant le collectible final du niveau (qui vous change de niveau)
 
-Conditions de défaite : Vous perdez si le temps qui vous est imparti dans le niveau est écoulé, ou si vous tombez dans un trou (défaite en touchant le vide)
+Conditions de défaite : Vous perdez si le temps qui vous est imparti dans le niveau est écoulé, ou si vous tombez dans un trou (défaite environnementale en touchant le vide)
 
