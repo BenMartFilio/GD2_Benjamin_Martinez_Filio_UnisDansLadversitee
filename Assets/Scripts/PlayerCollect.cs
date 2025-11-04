@@ -1,11 +1,12 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerCollect : MonoBehaviour
 {
     [SerializeField] private ScoreDatas _scoreData;
     [SerializeField] private UIController _uiController;   //lien fort entre les scripts (méthode de référence 1 pour update)
-
+    private Image keyImage;
     public static Action<int> OnTargetCollected;
 
     public void UpdateScore(int value)
@@ -20,4 +21,40 @@ public class PlayerCollect : MonoBehaviour
         Debug.Log(_scoreData.scoreValue);
     }
     
+
+    void Start()
+    {
+        if (_uiController != null)
+        {
+            Transform child = _uiController.transform.Find("KeyImage");
+            if (child != null)
+            {
+                keyImage = child.GetComponent<Image>();
+            }
+        }
+    }
+    public void ShowImage()
+    {
+        if (keyImage != null)
+        {
+            keyImage.gameObject.SetActive(true);
+        }
+        else
+        {
+            Debug.Log("IMAGE EST NULLE");
+        }
+    }
+
+    public void HideImage()
+    {
+        if (keyImage != null)
+        {
+            keyImage.gameObject.SetActive(false);
+        }
+        else
+        {
+            Debug.Log("IMAGE EST NULLE");
+        }
+    }
+
 }
