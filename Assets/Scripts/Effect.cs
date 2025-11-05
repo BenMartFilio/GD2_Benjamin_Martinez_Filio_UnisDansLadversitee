@@ -11,7 +11,13 @@ public class Effect : MonoBehaviour
     {
         if (other.gameObject.GetComponent<PlayerCollect>() != null)
         {
+            AudioSource audio = GetComponent<AudioSource>();
+            if (audio != null)
+            {
+                audio.Play();
+            }
             StartCoroutine(TempEffect(timeUnderEffect, other));
+
         }
     }
 

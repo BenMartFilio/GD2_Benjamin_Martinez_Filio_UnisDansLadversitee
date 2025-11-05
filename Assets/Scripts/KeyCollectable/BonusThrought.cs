@@ -9,6 +9,11 @@ public class BonusThrought : MonoBehaviour
             if (other.gameObject.GetComponent<PlayerCollect>().haveKey)
             {
                 other.gameObject.GetComponent<PlayerCollect>().UseKey();
+                AudioSource audio = GetComponent<AudioSource>();
+                if (audio != null)
+                {
+                    audio.Play();
+                }
                 Destroy(gameObject);
             }
             else

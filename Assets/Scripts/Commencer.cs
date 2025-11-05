@@ -78,6 +78,12 @@ public class Commencer : MonoBehaviour
         {
             Debug.Log("Text est nul");
         }
+
+        AudioSource audio = GetComponent<AudioSource>();
+        if (audio != null)
+        {
+            audio.Play();
+        }
     }
 
     public void HideText()

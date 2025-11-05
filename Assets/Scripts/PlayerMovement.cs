@@ -67,15 +67,15 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-            if (Input.GetKeyDown(KeyCode.G))
-            {
-                TryThrowGrappin();
-            }
+      //      if (Input.GetKeyDown(KeyCode.G))
+   //         {
+    //            TryThrowGrappin();
+    //       }
 
-            if (Input.GetKeyUp(KeyCode.G))
-            {
-                ThrowGrappin();
-            }
+     //       if (Input.GetKeyUp(KeyCode.G))
+     //       {
+     //           ThrowGrappin();
+    //        }
 
         }
 

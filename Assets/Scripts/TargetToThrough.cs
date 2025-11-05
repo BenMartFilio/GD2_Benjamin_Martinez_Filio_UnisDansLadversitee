@@ -18,6 +18,11 @@ public class TargetToThrough : MonoBehaviour
             ToggleVisivility(false);
             //_isInShadow = true;
             //TODO : Start Timer
+            AudioSource audio = GetComponent<AudioSource>();
+            if (audio != null)
+            {
+                audio.Play();
+            }
             StartCoroutine(ShadowTimerControl());
         }
     }
