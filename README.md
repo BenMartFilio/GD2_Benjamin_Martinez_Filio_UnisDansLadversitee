@@ -19,6 +19,7 @@ J'avais pour ambition de faire plus de niveaux, car le jeu est vite redondant en
 Les problèmes que j'ai rencontré ont souvent été lié à la communication entre les scripts. Ayant eu des difficultés durant plusieurs jours à tenter de bien faire les liens etc., j'ai fini par passer sur beaucoup de lien fort (donc ne mettant directement la référence dans le component), ce qui est plus simple, mais moins optimisé et modulable.
 
 IL y a aussi un nouveau système de déplacement avec le saut, qui permet de passer des trous et ne pas mourir du vide.
+Il y a aussi quelques bugs à corriger lié au code qui est parti dans trop de sens, car à chaque correction de bugs, tout devenait un peu plus, un méli-mélo.
 
 
 Condition de victoire : Le jeu est une boucle où il faut marquer le plus de points : vous gagnez des points en ramassant le collectible final du niveau (qui vous change de niveau (le jeu fait une boucle)).
